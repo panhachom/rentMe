@@ -1,0 +1,25 @@
+<%= form_with(model: @room, local: true) do |form| %>
+  <% if @room.errors.any? %>
+    <div class="error-messages">
+      <ul>
+        <% @room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :name, prompt: 'Select a user' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit @room.new_record? ? 'Create Room' : 'Update Room' %>
+  </div>
+<% end %>

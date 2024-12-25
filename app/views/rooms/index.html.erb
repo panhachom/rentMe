@@ -1,0 +1,13 @@
+<h1 class="text-3xl my-6 font-semibold"><%= t('room.title') %></h1>
+<%= link_to 'Create New Room', new_room_path, class: 'btn btn-primary' %>
+
+<div class="flex flex-row gap-2">
+    <% @rooms.each do |room| %>
+        <%= link_to edit_room_path(room), class: "block border-2 p-4 cursor-pointer" do %>
+            <h2>Room ID: <%= room.id %></h2>
+            <p> Room Name <%= room.name %></p>
+            <p> User Name <%= room.user.name %></p>
+        <% end %>
+    <% end %>
+</div>
+
